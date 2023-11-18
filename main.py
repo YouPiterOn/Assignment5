@@ -29,29 +29,28 @@ def decrypt(text: str, key: int):
     return f_cipher(text, key, decrypt_formula)
 
 
-def normal_mode():
-    inp = input("Enter text: ")
-    operation = input("Chose the operation (encrypt or decrypt): ")
-    key = int(input("Enter key: "))
+def normal_mode(operation: str, inp: str, key: int):
     if operation == "encrypt":
         return encrypt(inp, key)
     elif operation == "decrypt":
         return decrypt(inp, key)
 
 
-def secret_mode():
-    inp = input("Enter text: ")
+def secret_mode(inp: str):
     key = random.randint(1, 26)
     return encrypt(inp, key)
 
 
-mode = input("Chose the mode (normal or secret): ")
-if mode == "normal":
-    print(normal_mode())
-elif mode == "secret":
-    print(secret_mode())
+def caesar_cipher():
+    mode = input("Chose the mode (normal or secret): ")
+    if mode == "normal":
+        inp = input("Enter text: ")
+        operation = input("Chose the operation (encrypt or decrypt): ")
+        key = int(input("Enter key: "))
+        print(normal_mode(operation, inp, key))
+    elif mode == "secret":
+        inp = input("Enter text: ")
+        print(secret_mode(inp))
 
 
-
-
-
+caesar_cipher()
